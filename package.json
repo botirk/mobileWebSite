@@ -2,9 +2,8 @@
   "name": "mobilewebsite",
   "version": "1.0.0",
   "description": "ways to create mobile version websites",
-  "type": "module",
   "scripts": {
-    "start": "babel-node --presets @babel/preset-env,@babel/preset-react server/start.js",
+    "start": "npx babel-node --presets @babel/preset-react server/start.js",
     "chmod": "sudo chmod -R 775 .",
     "lint": "npx eslint . --ext js,jsx",
     "lint+fix": "npx eslint . --ext js,jsx --fix"
@@ -18,7 +17,6 @@
   "dependencies": {
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
-    "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "fastify": "^3.20.2",
     "fastify-static": "^4.2.3",

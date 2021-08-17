@@ -1,12 +1,12 @@
-import path from 'path';
-import fastifyStatic from 'fastify-static';
-import { readFile } from 'node:fs/promises';
-import isMobile from 'is-mobile';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server.js';
-import HelloWorld from './components/HelloWorld.jsx';
+const React = require('react');
+const path = require('path');
+const { readFile } = require('fs/promises');
+const fastifyStatic = require('fastify-static');
+const isMobile = require('is-mobile');
+const ReactDOMServer = require('react-dom/server.js');
+const SSR = require('./components/SSR.jsx');
 
-export default (myApp) => {
+module.exports = (myApp) => {
   myApp.register(fastifyStatic, { root: path.resolve('./server/assets') });
 
   myApp.get('/detection', async (request, reply) => {
@@ -23,8 +23,7 @@ export default (myApp) => {
 
   myApp.get('/ssr', async (request, reply) => {
     const templateHtml = new String(await readFile('server/templates/ssr.html'));
-    const reactHtml = ReactDOMServer.renderToString(HelloWorld);
-
+    const reactHtml = ReactDOMServer.renderToString(<SSR />);
     const renderedHtml = templateHtml.replace('#{react}', reactHtml);
 
     reply.type('text/html');

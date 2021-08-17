@@ -1,5 +1,7 @@
-import fastify from 'fastify';
-import routes from './routes.js';
+const fastify = require('fastify');
+const routes = require('./routes.jsx');
 
-const myApp = routes(fastify({ logger: true }));
+const myApp = fastify({ logger: true });
+routes(myApp);
+
 myApp.listen(8080, "0.0.0.0");
