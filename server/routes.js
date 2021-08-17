@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import isMobile from 'is-mobile';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server.js';
-import HelloWorld from './components/HelloWorld';
+import HelloWorld from './components/HelloWorld.jsx';
 
 export default (myApp) => {
   myApp.register(fastifyStatic, { root: path.resolve('./server/assets') });

@@ -4,7 +4,7 @@
   "description": "ways to create mobile version websites",
   "type": "module",
   "scripts": {
-    "start": "npx babel-node --presets @babel/preset-env,@babel/preset-react server/start.js",
+    "start": "babel-node --presets @babel/preset-env,@babel/preset-react server/start.js",
     "chmod": "sudo chmod -R 775 .",
     "lint": "npx eslint . --ext js,jsx",
     "lint+fix": "npx eslint . --ext js,jsx --fix"
