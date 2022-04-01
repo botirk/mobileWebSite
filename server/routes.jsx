@@ -12,7 +12,7 @@ module.exports = (myApp) => {
   myApp.get('/detection', async (request, reply) => {
     const isMobileReq = isMobile({ ua: request });
 
-    const templateHtml = new String(await readFile('server/templates/detection.html'));
+    const templateHtml = String(await readFile('server/templates/detection.html'));
     const renderedHtml = templateHtml
       .replace('#{client}', isMobileReq === true ? 'Mobile' : 'Desktop')
       .replace('#{useragent}', request.headers['user-agent'] ?? 'undefined');
@@ -22,7 +22,7 @@ module.exports = (myApp) => {
   });
 
   myApp.get('/ssr', async (request, reply) => {
-    const templateHtml = new String(await readFile('server/templates/ssr.html'));
+    const templateHtml = String(await readFile('server/templates/ssr.html'));
     const reactHtml = ReactDOMServer.renderToString(<SSR />);
     const renderedHtml = templateHtml.replace('#{react}', reactHtml);
 
@@ -31,4 +31,4 @@ module.exports = (myApp) => {
   });
 
   return myApp;
-}
+};
